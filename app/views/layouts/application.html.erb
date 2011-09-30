@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) || "Core App" %></title>
+  
+  <!-- Le HTML5 shiv, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+    
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+<%= yield %>
+
+<%= "Application Time: #{Time.now.strftime("%D @ %H%M %z")}" if Rails.env.development? %>
+<%= debug(params) if Rails.env.development? %>
+<%= debug(session) if Rails.env.development? %>
+<script>//<![CDATA[
+  
+//]]></script>
+<%= yield :pre_body_close %>
+</body>
+</html>
