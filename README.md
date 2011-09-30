@@ -21,7 +21,7 @@ Fork, clone, checkout this repo and perform the following to setup a master bran
     git symbolic-ref HEAD refs/heads/master
     rm .git/index 
     git clean -fdx 
-    git cherry-pick 4eec63d
+    git cherry-pick f18bf10
     touch README
     git add -A 
     git commit -m 'initial commit'
